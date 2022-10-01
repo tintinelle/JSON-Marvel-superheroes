@@ -94,7 +94,7 @@ const jsonHeroesArr = `[{
 // console.log(jsonHeroesArr);
 
 document.addEventListener("DOMContentLoaded", () => {
-    let optionsHeroes = ""; 
+    let optionsHeroes = "";
 
     const heroes = JSON.parse(jsonHeroesArr);
     console.log(heroes);
@@ -108,13 +108,11 @@ document.addEventListener("DOMContentLoaded", () => {
         <p><span class="subtitles">Род деятельности: </span>${hero.occupation}</p>
         <p><span class="subtitles">Друзья: </span>${hero.friends}</p>
         <p><span class="subtitles">Суперсилы: </span>${hero.power}</p>
-        <img src=${hero.picture} alt=${hero.heroName}>
+        <img src=${hero.picture} alt=${hero.heroils}</p> 
         <p><span class="subtitles">Подробнее: </span>${hero.details}</p>
-    </div>`;
+        Введите рейтинг от 1 до 10:<input type="number" min=1 max=10>
+        </div>`;
     }
 
     document.getElementById('allHeroes').innerHTML = optionsHeroes;
 });
-
-
-
