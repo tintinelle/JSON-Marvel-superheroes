@@ -1,4 +1,4 @@
-// 'use strict'
+'use strict'
 
 const jsonHeroesArr = `[{
     "heroName": "Бэтмен",
@@ -93,6 +93,11 @@ const jsonHeroesArr = `[{
 }]`;
 // console.log(jsonHeroesArr);
 
+
+const button = document.getElementById('rateAll');
+// let rating = document.querySelectorAll("input").value;
+let ratings = [];
+
 document.addEventListener("DOMContentLoaded", () => {
     let optionsHeroes = "";
 
@@ -100,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(heroes);
 
     for (let hero of heroes) {
-        console.log(hero);
+        // console.log(hero);
         optionsHeroes += `<div class="main__hero-wrap">
         <h2>${hero.heroName}</h2>
         <p><span class="subtitles">Вселенная: </span>${hero.universe}</p>
@@ -110,9 +115,52 @@ document.addEventListener("DOMContentLoaded", () => {
         <p><span class="subtitles">Суперсилы: </span>${hero.power}</p>
         <img src=${hero.picture} alt=${hero.heroils}</p> 
         <p><span class="subtitles">Подробнее: </span>${hero.details}</p>
-        Введите рейтинг от 1 до 10:<input type="number" min=1 max=10>
+        <div class="rating"></div>
+        Введите рейтинг от 1 до 10:<input type="number" min=1 max=10 name="rating">
         </div>`;
     }
 
     document.getElementById('allHeroes').innerHTML = optionsHeroes;
+
+    showRatings();
 });
+
+const showRatings = () => {
+    if (localStorage.getItem('ratings') !== null) {
+        ratings = JSON.parse(localStorage.getItem('ratings'));
+
+        let ratingDivs = document.querySelectorAll('.rating');
+
+        for (let i = 0; i < ratingDivs.length; i++) {
+            for (let i = 0; i < ratings.length; i++) {
+                ratingDivs[i].innerHTML = `Текущий рейтинг: ${ratings[i]}`;
+                console.log(ratings);
+            }
+        }
+    }
+};
+
+button.addEventListener('click', () => {
+    // rating = document.querySelectorAll("input").value
+    // ratings.push(rating);
+    // console.log(ratings);
+
+    ratings = [];
+    const inputs = document.getElementsByName('rating');
+
+    for (const input of inputs) {
+        if (!input.value) {
+            ratings.push(1);
+        } else {
+            ratings.push(input.value);
+        }
+    }
+
+    console.log(ratings);
+
+    // // делаем из массива строку и добавляем в локальное хранилище:
+    localStorage.setItem("ratings", JSON.stringify(ratings));
+
+    // отправляем в функцию, которая отвечает за отображение:
+    showRatings();
+})
