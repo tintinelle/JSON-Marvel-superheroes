@@ -1,0 +1,46 @@
+
+body {
+    background-color: #231942;
+}
+
+.subtitles {
+    font-weight: 700;
+}
+
+.main__all-heroes {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main__hero-wrap {
+    width: 40%;
+    padding: 20px;
+    margin-left: 100px;
+    margin-top: 20px;
+    border-radius: 15px;
+
+    font-size: 1.1em;
+
+    background-color: #C3BFD9;
+
+}
+
+.img {
+    width: 100%;
+}
+
+.main__hero-wrap h2 {
+    text-align: center;
+}
+
+.btn-rate {
+    width: 86%;
+    margin: 40px 100px;
+
+    font-weight: 500;
+}
+
+.btn-rate:hover {
+    background-color: #C3BFD9;
+    font-weight: 700;
+}
